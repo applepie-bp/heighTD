@@ -1,11 +1,12 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-internal class tile : MonoBehaviour{
+public class tile : MonoBehaviour{
 	public GameObject tilepreset; //used to initalise a copy of the tile
 	public GameObject parent; //used to have the transform postion of created tile, referenced through TileMap object
 	public float height; //the tile height
 	public Vector3 mapPos; //the tiles position, in refernce to the grid
+	private GameObject block;
 
 	// method tile() is a construcctor for the class
 	public tile(float _height, Vector3 _mapPos, GameObject _tilepreset, GameObject _parent)
@@ -22,7 +23,7 @@ internal class tile : MonoBehaviour{
 	private void create()
 	{
 		//instantiateses the cube object into the world
-		GameObject block = Instantiate(tilepreset, mapPos, tilepreset.transform.rotation) as GameObject;
+		block = Instantiate(tilepreset, mapPos, tilepreset.transform.rotation) as GameObject;
 		//references the tile transform position, from the parent object.
 		//also this puts all cloned tiles uber the "TileMap" object, not filling up the hierachy editor window
 		block.transform.parent = parent.transform;
